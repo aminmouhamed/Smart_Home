@@ -18,24 +18,34 @@ class _SettingState extends State<Setting> {
   late String password;
   late String o;
   Socket? socket;
-  isp32_config() async {
-    // function to config wifi of isp32
+  Future<bool> esp32_config() async {
+    try {
+      // function to config wifi of isp32
+      socket = await Socket.connect("192.168.4.1", 8080);
 
-    socket = await Socket.connect("192.168.4.1", 8080);
+      /// connect to esp32 tcp server
 
-    /// connect to esp32 tcp server
-    socket!.add(utf8.encode(ssid));
+      socket!.listen((onData) async {
+        print(String.fromCharCodes(onData).trim());
+        if (String.fromCharCodes(onData).trim() == 'h') {
+          socket!.add(utf8.encode(ssid));
+        }
+        if (String.fromCharCodes(onData).trim() == 'o') {
+          socket!.add(utf8.encode(password));
+          await Future.delayed(Duration(seconds: 5));
+          socket!.close();
+          return;
+        }
+      });
+      //await Future.delayed(Duration(seconds: 1));
+      //socket!.add(utf8.encode(password));
 
-    socket!.listen((onData) async {
-      await Future.delayed(Duration(seconds: 1));
-      print(String.fromCharCodes(onData).trim());
-
-      /// recv 'o' to send password
-    });
-    await Future.delayed(Duration(seconds: 1));
-    socket!.add(utf8.encode(password));
-    await Future.delayed(Duration(seconds: 5));
-    socket!.close();
+    } catch (e) {
+      //await Future.delayed(Duration(seconds: 5));
+      //socket!.close();
+      return false;
+    }
+    return true;
   }
 
   @override
@@ -75,6 +85,17 @@ class _SettingState extends State<Setting> {
               Container(
                 //height: Height / 2,
                 decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black38,
+                        blurRadius: 5.0, // soften the shadow
+                        spreadRadius: 0.0, //extend the shadow
+                        offset: Offset(
+                          0.0, // Move to right 10  horizontally
+                          3.0, // Move to bottom 10 Vertically
+                        ),
+                      )
+                    ],
                     color: therdColor,
                     borderRadius: BorderRadius.all(
                       Radius.circular(20),
@@ -145,8 +166,7 @@ class _SettingState extends State<Setting> {
                   button(
                       TEXT: "Config",
                       function: () async {
-                        try {
-                          isp32_config();
+                        if (await esp32_config()) {
                           AwesomeDialog(
                             context: context,
                             animType: AnimType.LEFTSLIDE,
@@ -163,7 +183,7 @@ class _SettingState extends State<Setting> {
                               debugPrint('Dialog Dissmiss from callback $type');
                             },
                           ).show();
-                        } catch (s) {
+                        } else {
                           AwesomeDialog(
                             context: context,
                             dialogType: DialogType.ERROR,
