@@ -5,6 +5,7 @@ import 'package:smarthome/pages/config.dart';
 import 'package:smarthome/pages/roome/Widgets/RoundedBTN.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class Room extends StatefulWidget {
   Room({Key? key}) : super(key: key);
@@ -26,6 +27,7 @@ class _RoomState extends State<Room> {
 
   final Pcontroller = PageController();
   final _auth = FirebaseAuth.instance;
+  late FlutterLocalNotificationsPlugin Lnotification;
   bool _saving = false;
   String titel = Roomname;
   double btnwidth = 60;
@@ -74,15 +76,30 @@ class _RoomState extends State<Room> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    Lnotification = new FlutterLocalNotificationsPlugin();
+    var Android = new AndroidInitializationSettings("mipmap/ic_launcher");
+    var ios = new IOSInitializationSettings();
+    var initsetting = new InitializationSettings(android: Android, iOS: ios);
+    Lnotification.initialize(initsetting,
+        onSelectNotification: (payload) => selectNotifications);
     super.initState();
     getdata();
   }
 
+  void showNotifications() {
+    var android = AndroidNotificationDetails("6", "smarthome");
+    var ios = IOSNotificationDetails();
+    var platform = new NotificationDetails(android: android, iOS: ios);
+    Lnotification.show(0, "Gaze", "Gas reached high levels .", platform,
+        payload: "send message ");
+  }
+
+  selectNotifications(String payload) {}
   Color? gazcolorindecator() {
     if (smoke <= 800) {
       return const Color.fromARGB(255, 128, 230, 133);
     } else if (smoke >= 1000) {
+      showNotifications();
       return const Color.fromARGB(255, 238, 80, 80);
     } else {
       return const Color.fromARGB(255, 242, 175, 74);
