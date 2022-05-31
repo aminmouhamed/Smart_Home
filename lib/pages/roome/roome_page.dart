@@ -48,29 +48,38 @@ class _RoomState extends State<Room> {
     },
     {
       "EnabelNote": true,
-      "Note": "Note : Click to open or close the window ",
+      "Note": "Note : Click to open or close the Door ",
       "icon": Icons.window
     },
     {
       "EnabelNote": false,
       "text": "30",
       "icon": null,
-    }
+    },
+    {
+      "EnabelNote": true,
+      "Note": "Note : Click to open or close the window ",
+      "icon": Icons.door_back_door,
+    },
   ];
-  List colors = [therdColor, null, null, null];
-  List btncolors = [null, null];
+  List colors = [therdColor, null, null, null, null];
+  List btncolors = [null, null, null];
   senddata() {}
   getdata() async {
     ref.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value as Map<dynamic, dynamic>;
       // print(data["temp"]);
       setState(() {
-        temp = data["temp"].toString();
+        temp = (data["temp"].toString() + " c ");
         smoke = data["smoke"];
+        if (smoke >= 1000) {
+          showNotifications();
+        }
       });
 
       data["light_baulb"] ? btncolors[0] = therdColor : btncolors[0] = null;
       data["window"] ? btncolors[1] = therdColor : btncolors[1] = null;
+      data["Door"] ? btncolors[2] = therdColor : btncolors[2] = null;
     });
   }
 
@@ -99,7 +108,6 @@ class _RoomState extends State<Room> {
     if (smoke <= 800) {
       return const Color.fromARGB(255, 128, 230, 133);
     } else if (smoke >= 1000) {
-      showNotifications();
       return const Color.fromARGB(255, 238, 80, 80);
     } else {
       return const Color.fromARGB(255, 242, 175, 74);
@@ -236,6 +244,17 @@ class _RoomState extends State<Room> {
                       width: btnwidth,
                       icon: Icons.smoke_free,
                     ),
+                    RoundedBTN(
+                      color: colors[4],
+                      onTab: () {
+                        setState(() {
+                          // Pcontroller.animateToPage(0,duration: Duration(seconds: 1), curve: Curves.ease);
+                          Pcontroller.jumpToPage(4);
+                        });
+                      },
+                      width: btnwidth,
+                      icon: Icons.door_back_door,
+                    )
                   ],
                 ),
                 Expanded(
@@ -244,7 +263,7 @@ class _RoomState extends State<Room> {
                       onPageChanged: (i) {
                         setState(() {
                           currentPage = i;
-                          colors = [null, null, null, null];
+                          colors = [null, null, null, null, null];
                           colors[i] = therdColor;
                         });
                       },
@@ -286,6 +305,22 @@ class _RoomState extends State<Room> {
                                           btncolors[1] == null;
                                         });
                                       }
+                                    } else if (currentPage == 4) {
+                                      print("page 5");
+                                      if (btncolors[2] == null) {
+                                        setState(() {
+                                          print("open door ");
+                                          ref.update({"Door": true});
+                                          btncolors[2] == therdColor;
+                                          print(btncolors);
+                                        });
+                                      } else {
+                                        setState(() {
+                                          print("close door ");
+                                          ref.update({"Door": false});
+                                          btncolors[2] == null;
+                                        });
+                                      }
                                     }
 
                                     ///////////////////////////////////////////////////////
@@ -307,7 +342,9 @@ class _RoomState extends State<Room> {
                                           ? btncolors[1]
                                           : i == 3
                                               ? gazcolorindecator()
-                                              : null,
+                                              : i == 4
+                                                  ? btncolors[2]
+                                                  : null,
                                 ),
                               ),
                               if (items[i]['EnabelNote'])
