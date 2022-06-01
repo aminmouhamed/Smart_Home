@@ -1,46 +1,28 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:smarthome/pages/config.dart';
-import 'package:smarthome/pages/home/templets/costum_buttons.dart';
+
+import 'package:smarthome/admin/temlets/costum_buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+class Admin extends StatefulWidget {
+  Admin({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Admin> createState() => _AdminState();
 }
 
-class _HomeState extends State<Home> {
+class _AdminState extends State<Admin> {
   final _auth = FirebaseAuth.instance;
-  final FirebaseMessaging _fcm = FirebaseMessaging.instance;
-  List<dynamic> rooms = [false, false, false, false, false, false];
-  String? username;
-  bool _saving = true;
 
-  getuserdata() {
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get()
-        .then((DocumentSnapshot Snapshot) {
-      final data = Snapshot.data() as Map<dynamic, dynamic>;
-      setState(() {
-        username = data["name"];
-        rooms = data["rooms"];
-        _saving = false;
-      });
-    });
-  }
+  List<dynamic> rooms = [true, true, true];
+  String? username;
+  bool _saving = false;
 
   @override
-  void initState() {
-    getuserdata();
-  }
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +47,7 @@ class _HomeState extends State<Home> {
                   icon: Icon(
                     Icons.logout,
                     size: 40,
-                    color: primerycolor,
+                    color: Colors.black,
                   )),
               IconButton(
                   onPressed: () {
@@ -74,7 +56,7 @@ class _HomeState extends State<Home> {
                   icon: Icon(
                     Icons.home,
                     size: 40,
-                    color: primerycolor,
+                    color: Colors.black,
                   )),
               IconButton(
                   onPressed: () {
@@ -83,7 +65,7 @@ class _HomeState extends State<Home> {
                   icon: Icon(
                     Icons.settings,
                     size: 40,
-                    color: primerycolor,
+                    color: Colors.black,
                   ))
             ],
           ),
@@ -110,7 +92,7 @@ class _HomeState extends State<Home> {
                   ),
                 )
               ],
-              color: SecendaryColor,
+              color: Colors.grey,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(60),
                 bottomRight: Radius.circular(60),
@@ -127,8 +109,8 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Text(
-                    "Hello, ${username} !",
-                    style: TextStyle(fontSize: 25, color: primerycolor),
+                    "Admin Panel",
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                   ),
                 ),
                 Expanded(
@@ -140,65 +122,35 @@ class _HomeState extends State<Home> {
                       crossAxisCount: 2,
                       children: [
                         tapbutton(
-                          text: "Bedroom",
+                          text: "Add User",
                           img: "images/bedroom.png",
                           Width: Width!,
                           visibel: rooms[0],
                           ontab: () {
                             setState(() {
-                              Roomname = "Bedroom";
+                              ////////
                             });
-                            Navigator.pushNamed(context, "room");
+                            Navigator.pushNamed(context, "adduser");
                           },
                         ),
                         tapbutton(
-                          text: "Living Room",
+                          text: "Edit Permission",
                           img: "images/living-room.png",
                           Width: Width!,
                           visibel: rooms[1],
                           ontab: () {
-                            Roomname = "Living Room";
-                            Navigator.pushNamed(context, "room");
+                            // Roomname = "Living Room";
+                            Navigator.pushNamed(context, "edituser");
                           },
                         ),
                         tapbutton(
-                          text: "kitchen",
+                          text: "Rooms",
                           img: "images/kitchen.png",
                           Width: Width!,
                           visibel: rooms[2],
                           ontab: () {
-                            Roomname = "kitchen";
-                            Navigator.pushNamed(context, "room");
-                          },
-                        ),
-                        tapbutton(
-                          text: "Bath Room",
-                          img: "images/toilet.png",
-                          Width: Width!,
-                          visibel: rooms[3],
-                          ontab: () {
-                            Roomname = "Bath Room";
-                            Navigator.pushNamed(context, "room");
-                          },
-                        ),
-                        tapbutton(
-                          text: "Dinning Room",
-                          img: "images/dinning-table.png",
-                          Width: Width!,
-                          visibel: rooms[4],
-                          ontab: () {
-                            Roomname = "Dinning Room";
-                            Navigator.pushNamed(context, "room");
-                          },
-                        ),
-                        tapbutton(
-                          text: "Office",
-                          img: "images/workspace.png",
-                          Width: Width!,
-                          visibel: rooms[5],
-                          ontab: () {
-                            Roomname = "Office";
-                            Navigator.pushNamed(context, "room");
+                            // Roomname = "kitchen";
+                            Navigator.pushNamed(context, "home");
                           },
                         ),
                       ]),

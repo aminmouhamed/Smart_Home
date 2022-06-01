@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smarthome/admin/add_user.dart';
+import 'package:smarthome/admin/admin.dart';
+import 'package:smarthome/admin/edit_PU.dart';
 import 'package:smarthome/pages/Setting/setting_page.dart';
 import 'package:smarthome/pages/config.dart';
 import 'package:smarthome/pages/home/home_page.dart';
@@ -37,12 +40,16 @@ class _SmartHomeState extends State<SmartHome> {
           primaryColor: primerycolor,
           backgroundColor: SecendaryColor),
       title: "Smart Home",
-      home: FirebaseAuth.instance.currentUser == null ? LogIn() : Home(),
+      home:
+          Admin(), // FirebaseAuth.instance.currentUser == null ? LogIn() : Home(),
       routes: {
         "login": (context) => LogIn(),
         "home": (context) => Home(),
         "room": (context) => Room(),
         "setting": (context) => Setting(),
+        "admin": (context) => Admin(),
+        "adduser": (context) => AddUser(),
+        "edituser": (context) => EditUser(),
       },
     );
   }
