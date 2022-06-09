@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smarthome/pages/home/home_page.dart';
+import 'package:smarthome/pages/login/login_page.dart';
 
 const Color primerycolor = Color(0xff3B5382);
 const Color SecendaryColor = Color(0xffDDE2EC);
@@ -9,6 +11,8 @@ const Color fieldColor = Color(0xffDDE2EC);
 bool chek = true;
 double? Width;
 double? Height;
+dynamic HOME = Home();
+bool ADMIN = false;
 late String Roomname;
 String? userName;
 screen(BuildContext context) {

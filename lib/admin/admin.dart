@@ -8,6 +8,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Admin extends StatefulWidget {
+  static final String roots = "admin";
   Admin({Key? key}) : super(key: key);
 
   @override
@@ -151,6 +152,16 @@ class _AdminState extends State<Admin> {
                           ontab: () {
                             // Roomname = "kitchen";
                             Navigator.pushNamed(context, "home");
+                          },
+                        ),
+                        tapbutton(
+                          text: "History",
+                          img: "images/kitchen.png",
+                          Width: Width!,
+                          visibel: rooms[2],
+                          ontab: () {
+                            // Roomname = "kitchen";
+                            Navigator.pushNamed(context, "history");
                           },
                         ),
                       ]),

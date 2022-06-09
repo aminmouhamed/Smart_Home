@@ -176,7 +176,7 @@ class _SettingState extends State<Setting> {
                             title: 'Succes',
                             desc: 'Esp 32 is configired ',
                             btnOkOnPress: () {
-                              debugPrint('OnClcik');
+                              Navigator.of(context).pushNamed("login");
                             },
                             btnOkIcon: Icons.check_circle,
                             onDissmissCallback: (type) {

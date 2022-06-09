@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smarthome/admin/add_user.dart';
 import 'package:smarthome/admin/admin.dart';
 import 'package:smarthome/admin/edit_PU.dart';
+import 'package:smarthome/admin/history.dart';
 import 'package:smarthome/pages/Setting/setting_page.dart';
 import 'package:smarthome/pages/config.dart';
 import 'package:smarthome/pages/home/home_page.dart';
@@ -13,6 +14,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -40,8 +42,7 @@ class _SmartHomeState extends State<SmartHome> {
           primaryColor: primerycolor,
           backgroundColor: SecendaryColor),
       title: "Smart Home",
-      home:
-          Admin(), // FirebaseAuth.instance.currentUser == null ? LogIn() : Home(),
+      home: FirebaseAuth.instance.currentUser == null ? LogIn() : HOME,
       routes: {
         "login": (context) => LogIn(),
         "home": (context) => Home(),
@@ -50,6 +51,7 @@ class _SmartHomeState extends State<SmartHome> {
         "admin": (context) => Admin(),
         "adduser": (context) => AddUser(),
         "edituser": (context) => EditUser(),
+        "history": (context) => History(),
       },
     );
   }

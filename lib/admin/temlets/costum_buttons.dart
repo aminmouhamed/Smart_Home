@@ -15,7 +15,7 @@ class tapbutton extends StatelessWidget {
   final String text;
   final double Width;
   final Function ontab;
-  Color color = Colors.white;
+  Color color = Colors.black87;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -61,7 +61,7 @@ class tapbutton extends StatelessWidget {
                   text,
                   style: TextStyle(
                       fontSize: 15,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.w500,
                       fontFamily: "Inter"),
                 ),

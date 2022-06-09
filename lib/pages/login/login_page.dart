@@ -24,7 +24,35 @@ class _LogInState extends State<LogIn> {
   TextEditingController Password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
+  final _fstore = FirebaseFirestore.instance;
+  late UserCredential _userCredential;
+
   bool _saving = false;
+  set_hestory(String UserName) {
+    _fstore.collection("h_users").add({
+      "user_name": UserName,
+      "time": DateTime.now(),
+    });
+  }
+
+  isadmin() {
+    _fstore
+        .collection("users")
+        .doc(_userCredential.user!.uid)
+        .get()
+        .then((DocumentSnapshot Snapshot) {
+      final data = Snapshot.data() as Map<dynamic, dynamic>;
+      setState(() {
+        ADMIN = data["admin"];
+        set_hestory(data["name"]);
+        if (ADMIN) {
+          Navigator.of(context).pushReplacementNamed("admin");
+        } else {
+          Navigator.of(context).pushReplacementNamed("home");
+        }
+      });
+    });
+  }
 
   @override
   void initState() {}
@@ -115,11 +143,9 @@ class _LogInState extends State<LogIn> {
                       _saving = true;
                     });
                     try {
-                      UserCredential userCredential =
-                          await _auth.signInWithEmailAndPassword(
-                              email: Email.text, password: Password.text);
-
-                      Navigator.of(context).pushReplacementNamed("home");
+                      _userCredential = await _auth.signInWithEmailAndPassword(
+                          email: Email.text, password: Password.text);
+                      isadmin();
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         AwesomeDialog(

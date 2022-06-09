@@ -9,6 +9,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Home extends StatefulWidget {
+  static final String roots = "home";
   Home({Key? key}) : super(key: key);
 
   @override
@@ -31,6 +32,7 @@ class _HomeState extends State<Home> {
       final data = Snapshot.data() as Map<dynamic, dynamic>;
       setState(() {
         username = data["name"];
+        ADMIN = data["admin"];
         rooms = data["rooms"];
         _saving = false;
       });
@@ -64,6 +66,17 @@ class _HomeState extends State<Home> {
                   },
                   icon: Icon(
                     Icons.logout,
+                    size: 40,
+                    color: primerycolor,
+                  )),
+              IconButton(
+                  onPressed: () {
+                    if (ADMIN) {
+                      Navigator.of(context).pushReplacementNamed("admin");
+                    }
+                  },
+                  icon: Icon(
+                    Icons.person,
                     size: 40,
                     color: primerycolor,
                   )),
