@@ -148,6 +148,10 @@ class _AddUserState extends State<AddUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.grey,
+          title: Text("Add User"),
+        ),
         body: ModalProgressHUD(
             inAsyncCall: _saving,
             child: ListView(children: [
@@ -267,145 +271,148 @@ class _AddUserState extends State<AddUser> {
                         Radius.circular(20),
                       ),
                     ),
-                    child: Column(children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Text(
-                          "User Prermisiont",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Text(
+                            "User Permission",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Bedroom",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[0],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[0] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Bedroom",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[0],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[0] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Living Room",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[1],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[1] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Living Room",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[1],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[1] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "kitchen",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[2],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[2] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "kitchen",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[2],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[2] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Bath Room",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[3],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[3] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Bath Room",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[3],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[3] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Dinning Room",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[4],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[4] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Dinning Room",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[4],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[4] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              "Office",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            Switch(
-                              activeColor: Colors.black,
-                              value: _RoomsP[5],
-                              onChanged: (value) {
-                                setState(() {
-                                  _RoomsP[5] = value;
-                                });
-                              },
-                            ),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Office",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              Switch(
+                                activeColor: Colors.black,
+                                value: _RoomsP[5],
+                                onChanged: (value) {
+                                  setState(() {
+                                    _RoomsP[5] = value;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ]),
+                      ]),
+                    ),
                   )),
               button(
-                  TEXT: "submit",
+                  TEXT: "Submit",
                   function: () {
                     if (_formKey.currentState!.validate()) {
                       setState(() {

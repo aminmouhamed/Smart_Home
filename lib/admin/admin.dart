@@ -21,6 +21,12 @@ class _AdminState extends State<Admin> {
   List<dynamic> rooms = [true, true, true];
   String? username;
   bool _saving = false;
+  List<Color> btncolor = [
+    Color.fromARGB(221, 103, 100, 100),
+    Color.fromARGB(221, 103, 100, 100),
+    Color.fromARGB(221, 103, 100, 100),
+    Color.fromARGB(221, 103, 100, 100)
+  ];
 
   @override
   void initState() {}
@@ -124,7 +130,7 @@ class _AdminState extends State<Admin> {
                       children: [
                         tapbutton(
                           text: "Add User",
-                          img: "images/bedroom.png",
+                          img: "images/add-user.png",
                           Width: Width!,
                           visibel: rooms[0],
                           ontab: () {
@@ -136,7 +142,7 @@ class _AdminState extends State<Admin> {
                         ),
                         tapbutton(
                           text: "Edit Permission",
-                          img: "images/living-room.png",
+                          img: "images/edit.png",
                           Width: Width!,
                           visibel: rooms[1],
                           ontab: () {
@@ -146,7 +152,7 @@ class _AdminState extends State<Admin> {
                         ),
                         tapbutton(
                           text: "Rooms",
-                          img: "images/kitchen.png",
+                          img: "images/home.png",
                           Width: Width!,
                           visibel: rooms[2],
                           ontab: () {
@@ -156,7 +162,7 @@ class _AdminState extends State<Admin> {
                         ),
                         tapbutton(
                           text: "History",
-                          img: "images/kitchen.png",
+                          img: "images/history.png",
                           Width: Width!,
                           visibel: rooms[2],
                           ontab: () {

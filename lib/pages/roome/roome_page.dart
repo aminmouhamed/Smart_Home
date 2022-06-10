@@ -48,7 +48,7 @@ class _RoomState extends State<Room> {
     },
     {
       "EnabelNote": true,
-      "Note": "Note : Click to open or close the Door ",
+      "Note": "Note :  Click to turn the air conditioner on or off",
       "icon": Icons.window
     },
     {
@@ -58,7 +58,7 @@ class _RoomState extends State<Room> {
     },
     {
       "EnabelNote": true,
-      "Note": "Note : Click to open or close the window ",
+      "Note": "Note : Click to open or close the Door",
       "icon": Icons.door_back_door,
     },
   ];
@@ -99,7 +99,7 @@ class _RoomState extends State<Room> {
     var android = AndroidNotificationDetails("6", "smarthome");
     var ios = IOSNotificationDetails();
     var platform = new NotificationDetails(android: android, iOS: ios);
-    Lnotification.show(0, "Gaze", "Gas reached high levels .", platform,
+    Lnotification.show(0, "Gaz", "Gaz reached high levels .", platform,
         payload: "send message ");
   }
 
@@ -333,7 +333,7 @@ class _RoomState extends State<Room> {
                                     });
                                     // write here whate the functions dase
                                   },
-                                  width: 0.8 * Width!,
+                                  width: 0.7 * Width!,
                                   icon: items[i]['icon'],
                                   Note: TSindex(i),
                                   color: i == 0
@@ -363,7 +363,7 @@ class _RoomState extends State<Room> {
                                       child: Text(
                                         items[i]['Note'],
                                         style: TextStyle(
-                                            fontSize: 30, color: primerycolor),
+                                            fontSize: 25, color: primerycolor),
                                       ),
                                     ),
                                   ),

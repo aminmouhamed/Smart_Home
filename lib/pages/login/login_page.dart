@@ -108,14 +108,14 @@ class _LogInState extends State<LogIn> {
                                     const EdgeInsets.symmetric(vertical: 20),
                                 child: TextInput(
                                   ktype: TextInputType.emailAddress,
-                                  Error: "pleas Enter your email",
+                                  Error: "Please Enter your email",
                                   i_controller: Email,
                                   text: "Email",
                                   icon: Icons.email,
                                 )),
                             TextInput(
                               obs: true,
-                              Error: "please Enter password !",
+                              Error: "Please Enter password !",
                               i_controller: Password,
                               text: "Password",
                               icon: Icons.lock,
@@ -171,6 +171,18 @@ class _LogInState extends State<LogIn> {
                           btnOkIcon: Icons.cancel,
                           btnOkColor: Colors.red,
                         ).show();
+                      } else if (e.code == "invalid-email") {
+                        AwesomeDialog(
+                          context: context,
+                          dialogType: DialogType.ERROR,
+                          animType: AnimType.RIGHSLIDE,
+                          headerAnimationLoop: true,
+                          title: 'Error',
+                          desc: 'invalid email !.',
+                          btnOkOnPress: () {},
+                          btnOkIcon: Icons.cancel,
+                          btnOkColor: Colors.red,
+                        ).show();
                       } else {
                         AwesomeDialog(
                           context: context,
@@ -178,7 +190,7 @@ class _LogInState extends State<LogIn> {
                           animType: AnimType.RIGHSLIDE,
                           headerAnimationLoop: true,
                           title: 'Error',
-                          desc: 'Wrong password and email .',
+                          desc: 'No Internet !.',
                           btnOkOnPress: () {},
                           btnOkIcon: Icons.cancel,
                           btnOkColor: Colors.red,

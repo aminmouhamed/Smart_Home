@@ -15,7 +15,7 @@ class tapbutton extends StatelessWidget {
   final String text;
   final double Width;
   final Function ontab;
-  Color color = Colors.black87;
+  Color color = Color.fromARGB(221, 103, 100, 100);
   @override
   Widget build(BuildContext context) {
     return Center(

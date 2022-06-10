@@ -5,45 +5,6 @@ that file contain all the component for creat a butefful button
 import 'package:flutter/material.dart';
 import 'package:smarthome/pages/config.dart';
 
-/*
-class buttons extends StatefulWidget {
-  buttons({Key? key}) : super(key: key);
-
-  @override
-  State<buttons> createState() => _buttonsState();
-}
-
-class _buttonsState extends State<buttons> {
-  @override
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: Height! * 0.2,
-      child: Center(
-          //heightFactor: 0.2 * Height!,
-          //color: Colors.black,
-          child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          button(
-            function: () {},
-            TEXT: "Login",
-          ),
-          IconButton(
-            iconSize: 54,
-            onPressed: () {},
-            icon: Icon(
-              Icons.settings,
-              color: primerycolor,
-            ),
-            color: SecendaryColor,
-          )
-        ],
-      )),
-    );
-  }
-}
-*/
 class button extends StatelessWidget {
   button({Key? key, required this.TEXT, required this.function})
       : super(key: key);
