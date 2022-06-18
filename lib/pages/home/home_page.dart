@@ -155,7 +155,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "Bedroom",
                           img: "images/bedroom.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[0],
                           ontab: () {
                             setState(() {
@@ -167,7 +167,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "Living Room",
                           img: "images/living-room.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[1],
                           ontab: () {
                             Roomname = "Living Room";
@@ -177,7 +177,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "kitchen",
                           img: "images/kitchen.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[2],
                           ontab: () {
                             Roomname = "kitchen";
@@ -187,7 +187,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "Bath Room",
                           img: "images/toilet.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[3],
                           ontab: () {
                             Roomname = "Bath Room";
@@ -197,7 +197,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "Dinning Room",
                           img: "images/dinning-table.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[4],
                           ontab: () {
                             Roomname = "Dinning Room";
@@ -207,7 +207,7 @@ class _HomeState extends State<Home> {
                         tapbutton(
                           text: "Office",
                           img: "images/workspace.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[5],
                           ontab: () {
                             Roomname = "Office";

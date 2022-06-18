@@ -16,7 +16,7 @@ class user_h extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 1),
       child: Container(
-        height: 50,
+        height: HW! * 30,
         decoration: BoxDecoration(color: Color.fromARGB(255, 80, 83, 86)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -24,9 +24,9 @@ class user_h extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
               user,
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
-            Text(time, style: TextStyle(color: Colors.white, fontSize: 20))
+            Text(time, style: TextStyle(color: Colors.white, fontSize: 15))
           ]),
         ),
       ),
@@ -180,6 +180,7 @@ class _HistoryState extends State<History> {
 }
 
 class LineChartSample2 extends StatefulWidget {
+  // class design graph
   const LineChartSample2(
       {Key? key, required this.data, required this.Gaz, required this.show})
       : super(key: key);

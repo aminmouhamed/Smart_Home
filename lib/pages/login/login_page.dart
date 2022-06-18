@@ -15,6 +15,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LogIn extends StatefulWidget {
+  // creat class login extends StatefulWidget
   @override
   State<LogIn> createState() => _LogInState();
 }
@@ -29,6 +30,7 @@ class _LogInState extends State<LogIn> {
 
   bool _saving = false;
   set_hestory(String UserName) {
+    // to send login hestory
     _fstore.collection("h_users").add({
       "user_name": UserName,
       "time": DateTime.now(),
@@ -36,6 +38,7 @@ class _LogInState extends State<LogIn> {
   }
 
   isadmin() {
+    // to chek if user is admin or not
     _fstore
         .collection("users")
         .doc(_userCredential.user!.uid)
@@ -54,9 +57,7 @@ class _LogInState extends State<LogIn> {
     });
   }
 
-  @override
-  void initState() {}
-
+  /// design
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,9 +94,9 @@ class _LogInState extends State<LogIn> {
             return Column(
               children: [
                 SizedBox(
-                  height: containerHeight * 0.2,
+                  height: containerHeight * (1 / 8),
                 ),
-                logo(containerWidht),
+                logo(containerHeight),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
@@ -105,7 +106,7 @@ class _LogInState extends State<LogIn> {
                           children: [
                             Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 20),
+                                    EdgeInsets.symmetric(vertical: HW! * 10),
                                 child: TextInput(
                                   ktype: TextInputType.emailAddress,
                                   Error: "Please Enter your email",
@@ -205,7 +206,7 @@ class _LogInState extends State<LogIn> {
                 TEXT: "Login",
               ),
               IconButton(
-                iconSize: 54,
+                iconSize: HW! * 30,
                 onPressed: () {
                   Navigator.of(context).pushNamed("setting");
                 },
@@ -222,52 +223,3 @@ class _LogInState extends State<LogIn> {
     ));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                      child: Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 20),
-                                  child: TextInput(
-                                    Error: "pleas Enter your email",
-                                    i_controller: Email,
-                                    text: "Email",
-                                    icon: Icons.email,
-                                  )),
-                              TextInput(
-                                Error: "please Enter password !",
-                                i_controller: Password,
-                                text: "Password",
-                                icon: Icons.lock,
-                              ),
-                            ],
-                          )),
-                    ),
-                  )
-                  */

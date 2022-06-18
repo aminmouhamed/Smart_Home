@@ -56,8 +56,8 @@ class button extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Width! / 15, vertical: 10),
           child: Container(
-            height: 54,
-            width: Width! * 0.5,
+            height: Height! * 0.07,
+            width: Width! * 0.4,
             alignment: Alignment.center,
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
@@ -72,7 +72,7 @@ class button extends StatelessWidget {
             ], color: SecendaryColor, borderRadius: BorderRadius.circular(30)),
             child: Text(
               TEXT == null ? "test" : TEXT,
-              style: TextStyle(fontSize: 25, color: therdColor),
+              style: TextStyle(fontSize: 15 * HW!, color: therdColor),
             ),
           ),
         ));

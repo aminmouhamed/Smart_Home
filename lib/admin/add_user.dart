@@ -118,33 +118,6 @@ class _AddUserState extends State<AddUser> {
     }
   }
 
-  Widget room_switsh(String Rname, bool val) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            Rname,
-            style: TextStyle(fontSize: 20),
-          ),
-          Switch(
-            activeColor: Colors.black,
-            value: val,
-            onChanged: (value) {
-              setState(() {
-                val = value;
-              });
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  void initState() {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

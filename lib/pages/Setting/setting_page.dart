@@ -18,6 +18,7 @@ class _SettingState extends State<Setting> {
   late String password;
   late String o;
   Socket? socket;
+
   Future<bool> esp32_config() async {
     try {
       // function to config wifi of isp32
@@ -28,21 +29,16 @@ class _SettingState extends State<Setting> {
       socket!.listen((onData) async {
         print(String.fromCharCodes(onData).trim());
         if (String.fromCharCodes(onData).trim() == 'h') {
-          socket!.add(utf8.encode(ssid));
+          socket!.add(utf8.encode(ssid)); // send ssid to esp32 server
         }
         if (String.fromCharCodes(onData).trim() == 'o') {
-          socket!.add(utf8.encode(password));
+          socket!.add(utf8.encode(password)); // send password to esp32 server
           await Future.delayed(Duration(seconds: 5));
-          socket!.close();
+          socket!.close(); // close socket
           return;
         }
       });
-      //await Future.delayed(Duration(seconds: 1));
-      //socket!.add(utf8.encode(password));
-
     } catch (e) {
-      //await Future.delayed(Duration(seconds: 5));
-      //socket!.close();
       return false;
     }
     return true;

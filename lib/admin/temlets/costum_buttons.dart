@@ -28,8 +28,8 @@ class tapbutton extends StatelessWidget {
         },
         onTap: visibel ? () => ontab() : () {},
         child: Container(
-          width: Width * 0.37,
-          height: Width * 0.37,
+          width: Width * 70,
+          height: Width * 70,
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -61,7 +61,7 @@ class tapbutton extends StatelessWidget {
                   text,
                   style: TextStyle(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.w500,
                       fontFamily: "Inter"),
                 ),

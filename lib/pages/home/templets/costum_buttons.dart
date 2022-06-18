@@ -28,8 +28,8 @@ class tapbutton extends StatelessWidget {
         },
         onTap: visibel ? () => ontab() : () {},
         child: Container(
-          width: Width * 0.37,
-          height: Width * 0.37,
+          width: Width * 70,
+          height: Width * 70,
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(

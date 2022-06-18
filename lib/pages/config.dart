@@ -11,6 +11,7 @@ const Color fieldColor = Color(0xffDDE2EC);
 bool chek = true;
 double? Width;
 double? Height;
+double? HW;
 dynamic HOME = Home();
 bool ADMIN = false;
 late String Roomname;
@@ -18,5 +19,6 @@ String? userName;
 screen(BuildContext context) {
   Width = MediaQuery.of(context).size.width;
   Height = MediaQuery.of(context).size.height;
+  HW = Height! / Width!;
   chek = false;
 }

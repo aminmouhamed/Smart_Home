@@ -13,8 +13,8 @@ class logo extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
-                width: 0.4 * containerWidth,
-                height: 0.4 * containerWidth,
+                width: 0.25 * containerWidth,
+                height: 0.25 * containerWidth,
                 child: Image.asset(
                   // import logo image from assets file "imeges"
                   "images/smart-home.png",
@@ -28,14 +28,14 @@ class logo extends StatelessWidget {
                 "SMART ",
                 style: TextStyle(
                     color: fieldColor,
-                    fontSize: 35,
+                    fontSize: 17 * HW!,
                     fontWeight: FontWeight.w100),
               ),
               Text(
                 "HOME",
                 style: TextStyle(
                     color: primerycolor,
-                    fontSize: 35,
+                    fontSize: 17 * HW!,
                     fontWeight: FontWeight.w600),
               )
             ],

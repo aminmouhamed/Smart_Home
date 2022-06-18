@@ -15,22 +15,12 @@ class Room extends StatefulWidget {
 }
 
 class _RoomState extends State<Room> {
-  dynamic TSindex(int i) {
-    if (i == 1) {
-      return temp;
-    } else if (i == 3) {
-      return smoke.toString();
-    } else {
-      return null;
-    }
-  }
-
   final Pcontroller = PageController();
   final _auth = FirebaseAuth.instance;
   late FlutterLocalNotificationsPlugin Lnotification;
   bool _saving = false;
   String titel = Roomname;
-  double btnwidth = 60;
+  double btnwidth = 25 * HW!;
   String temp = '10';
   int smoke = 0;
   int currentPage = 0;
@@ -64,7 +54,17 @@ class _RoomState extends State<Room> {
   ];
   List colors = [therdColor, null, null, null, null];
   List btncolors = [null, null, null];
-  senddata() {}
+
+  dynamic TSindex(int i) {
+    if (i == 1) {
+      return temp;
+    } else if (i == 3) {
+      return smoke.toString();
+    } else {
+      return null;
+    }
+  }
+
   getdata() async {
     ref.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value as Map<dynamic, dynamic>;
@@ -104,6 +104,7 @@ class _RoomState extends State<Room> {
   }
 
   selectNotifications(String payload) {}
+
   Color? gazcolorindecator() {
     if (smoke <= 800) {
       return const Color.fromARGB(255, 128, 230, 133);
@@ -306,17 +307,13 @@ class _RoomState extends State<Room> {
                                         });
                                       }
                                     } else if (currentPage == 4) {
-                                      print("page 5");
                                       if (btncolors[2] == null) {
                                         setState(() {
-                                          print("open door ");
                                           ref.update({"Door": true});
                                           btncolors[2] == therdColor;
-                                          print(btncolors);
                                         });
                                       } else {
                                         setState(() {
-                                          print("close door ");
                                           ref.update({"Door": false});
                                           btncolors[2] == null;
                                         });
@@ -333,7 +330,7 @@ class _RoomState extends State<Room> {
                                     });
                                     // write here whate the functions dase
                                   },
-                                  width: 0.7 * Width!,
+                                  width: (2 / 6) * Height!,
                                   icon: items[i]['icon'],
                                   Note: TSindex(i),
                                   color: i == 0
@@ -363,7 +360,8 @@ class _RoomState extends State<Room> {
                                       child: Text(
                                         items[i]['Note'],
                                         style: TextStyle(
-                                            fontSize: 25, color: primerycolor),
+                                            fontSize: 11 * HW!,
+                                            color: primerycolor),
                                       ),
                                     ),
                                   ),

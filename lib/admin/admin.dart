@@ -29,9 +29,6 @@ class _AdminState extends State<Admin> {
   ];
 
   @override
-  void initState() {}
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -131,7 +128,7 @@ class _AdminState extends State<Admin> {
                         tapbutton(
                           text: "Add User",
                           img: "images/add-user.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[0],
                           ontab: () {
                             setState(() {
@@ -143,7 +140,7 @@ class _AdminState extends State<Admin> {
                         tapbutton(
                           text: "Edit Permission",
                           img: "images/edit.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[1],
                           ontab: () {
                             // Roomname = "Living Room";
@@ -153,7 +150,7 @@ class _AdminState extends State<Admin> {
                         tapbutton(
                           text: "Rooms",
                           img: "images/home.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[2],
                           ontab: () {
                             // Roomname = "kitchen";
@@ -163,7 +160,7 @@ class _AdminState extends State<Admin> {
                         tapbutton(
                           text: "History",
                           img: "images/history.png",
-                          Width: Width!,
+                          Width: HW!,
                           visibel: rooms[2],
                           ontab: () {
                             // Roomname = "kitchen";
